@@ -15,10 +15,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
 from core.helper.encrypter import batch_decrypt_token, encrypt_token, obfuscated_token
-from core.ops.entities.config_entity import (
-    OPS_FILE_PATH,
-    TracingProviderEnum,
-)
+from core.ops.entities.config_entity import OPS_FILE_PATH, TracingProviderEnum
 from core.ops.entities.trace_entity import (
     DatasetRetrievalTraceInfo,
     DraftNodeExecutionTrace,
@@ -34,10 +31,10 @@ from core.ops.entities.trace_entity import (
     WorkflowTraceInfo,
 )
 from core.ops.utils import get_message_data
-from extensions.ext_database import db
 from extensions.ext_storage import storage
 from models.account import Tenant
 from models.dataset import Dataset
+from models.engine import db
 from models.model import App, AppModelConfig, Conversation, Message, MessageFile, TraceAppConfig
 from models.tools import ApiToolProvider, BuiltinToolProvider, MCPToolProvider, WorkflowToolProvider
 from models.workflow import WorkflowAppLog
@@ -517,6 +514,8 @@ class TraceTask:
 
     @classmethod
     def _get_workflow_run_repo(cls):
+        from repositories.factory import DifyAPIRepositoryFactory
+
         if cls._workflow_run_repo is None:
             with cls._repo_lock:
                 if cls._workflow_run_repo is None:
