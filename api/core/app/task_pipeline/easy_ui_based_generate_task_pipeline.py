@@ -45,8 +45,6 @@ from core.app.entities.task_entities import (
 from core.app.task_pipeline.based_generate_task_pipeline import BasedGenerateTaskPipeline
 from core.app.task_pipeline.message_cycle_manager import MessageCycleManager
 from core.base.tts import AppGeneratorTTSPublisher, AudioTrunk
-from core.file import helpers as file_helpers
-from core.file.enums import FileTransferMethod
 from core.model_manager import ModelInstance
 from core.model_runtime.entities.llm_entities import LLMResult, LLMResultChunk, LLMResultChunkDelta, LLMUsage
 from core.model_runtime.entities.message_entities import (
@@ -60,6 +58,8 @@ from core.prompt.utils.prompt_template_parser import PromptTemplateParser
 from core.telemetry import TelemetryContext, TelemetryEvent, TraceTaskName
 from core.telemetry import emit as telemetry_emit
 from core.tools.signature import sign_tool_file
+from core.workflow.file import helpers as file_helpers
+from core.workflow.file.enums import FileTransferMethod
 from events.message_event import message_was_created
 from extensions.ext_database import db
 from libs.datetime_utils import naive_utc_now

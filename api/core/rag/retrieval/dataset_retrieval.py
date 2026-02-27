@@ -23,7 +23,6 @@ from core.callback_handler.index_tool_callback_handler import DatasetIndexToolCa
 from core.db.session_factory import session_factory
 from core.entities.agent_entities import PlanningStrategy
 from core.entities.model_entities import ModelStatus
-from core.file import File, FileTransferMethod, FileType
 from core.memory.token_buffer_memory import TokenBufferMemory
 from core.model_manager import ModelInstance, ModelManager
 from core.model_runtime.entities.llm_entities import LLMResult, LLMUsage
@@ -62,6 +61,7 @@ from core.telemetry import TelemetryContext, TelemetryEvent, TraceTaskName
 from core.telemetry import emit as telemetry_emit
 from core.tools.signature import sign_upload_file
 from core.tools.utils.dataset_retriever.dataset_retriever_base_tool import DatasetRetrieverBaseTool
+from core.workflow.file import File, FileTransferMethod, FileType
 from core.workflow.nodes.knowledge_retrieval import exc
 from core.workflow.repositories.rag_retrieval_protocol import (
     KnowledgeRetrievalRequest,
